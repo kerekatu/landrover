@@ -1,0 +1,210 @@
+/* * BASE */
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%; /* ? 10px/16px = 62.5%, 10px = 1rem */
+}
+
+body {
+  font-size: 1.2rem;
+  font-family: "Nunito", sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+/* * CLASSES */
+
+.container {
+  display: grid; /* ? explicit grid */
+  grid-template-rows: 100vh minmax(100vh, min-content) min-content;
+  grid-template-columns:
+    [full-start] minmax(8rem, 1fr) [center-start] repeat(
+      8,
+      minmax(min-content, 1fr)
+    )
+    [center-end] minmax(8rem, 1fr) [full-end];
+}
+
+.hero {
+  grid-row: 1 / 2;
+  grid-column: full-start / full-end;
+
+  background: url(../img/Landrover_bil.jpg) no-repeat fixed;
+  background-size: cover;
+  background-position: 50% 100%;
+}
+
+.logo {
+  position: relative;
+}
+
+.logo__img {
+  object-fit: cover;
+  width: 30rem;
+  height: 20rem;
+}
+
+.logo__text {
+  font-weight: 700;
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(6.5rem, 15rem);
+}
+
+.product {
+  grid-row: 2 / 3;
+  grid-column: center-start / center-end;
+  align-content: center;
+
+  display: grid; /* ? implicit grid */
+  grid-gap: 5rem;
+  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+  padding: 8rem 0;
+}
+
+.product__text {
+  width: 25rem;
+}
+
+.product__img {
+  align-self: end;
+}
+
+.product__img img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.footer {
+  grid-row: 3 / -1;
+  grid-column: full-start / full-end;
+
+  background-color: #555;
+
+  display: grid; /* ? implicit grid */
+  grid-template-rows: repeat(2, 1fr);
+}
+
+.footer-nav {
+  display: grid; /* ? implicit grid */
+  grid-template-columns: repeat(auto-fit, minmax(35rem, 1fr));
+  padding: 8rem;
+}
+
+.footer__list {
+  list-style: none;
+  padding: 1rem;
+}
+
+.footer__link {
+  color: #f3f3f3;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.footer__copy {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.footer__text {
+  position: relative;
+  padding: 4rem 0 1rem 4rem;
+  font-weight: 700;
+}
+
+.footer__text::after {
+  content: "";
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  height: 0.1rem;
+  background-color: #111;
+  width: 100%;
+}
+
+.footer__text--light {
+  padding: 1rem 0 0 4rem;
+  color: #777;
+}
+
+/* * REUSABLE CLASSES */
+
+.heading-1 {
+  font-size: 3.2rem;
+  font-weight: 700;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.heading-2 {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1;
+  text-transform: uppercase;
+  color: #999;
+}
+
+.heading-3 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.heading-3--light {
+  color: #fff;
+}
+
+.mb-sm {
+  margin-bottom: 2rem;
+}
+
+.mb-md {
+  margin-bottom: 3rem;
+}
+
+.mb-lg {
+  margin-bottom: 4rem;
+}
+
+.mb-hg {
+  margin-bottom: 8rem;
+}
+
+.cta {
+  padding: 1.5rem 3rem;
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  border: none;
+  background-color: #111;
+  color: #fff;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  font-family: "Nunito", sans-serif;
+}
+
+.cta:hover {
+  opacity: 0.8;
+}
+
+/* * MEDIA QUERIES */
+
+@media only screen and (max-width: 56.25em) {
+  html {
+    font-size: 50%;
+  }
+}
